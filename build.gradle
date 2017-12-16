@@ -1,0 +1,78 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
+        classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.4.14"
+        classpath 'com.novoda:bintray-release:0.5.0'
+    }
+}
+
+group 'com.ferranpons'
+version "${versionMajor}.${versionMinor}.${versionPatch}"
+
+apply plugin: 'java-gradle-plugin'
+
+sourceCompatibility = 1.8
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+apply plugin: 'com.novoda.bintray-release'
+
+gradlePlugin {
+    plugins {
+        TwitterPlugin {
+            id = "com.ferranpons.twitter-gradle-plugin"
+            implementationClass = "com.ferranpons.twitterplugin.TwitterPlugin"
+        }
+    }
+}
+
+dependencies {
+    compile group: 'org.twitter4j', name: 'twitter4j-core', version: '4.0.4'
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+publish {
+    userOrg = 'ferranpons'
+    groupId = 'com.ferranpons'
+    artifactId = 'twitter-gradle-plugin'
+    publishVersion = "${versionMajor}.${versionMinor}.${versionPatch}"
+    desc = 'Gradle plugin that generates a gradle task for sending Twitter updates'
+    website = 'https://github.com/ferranpons'
+}
+
+def getVersionMajor() {
+    def content = file('./version.properties')
+
+    Properties properties = new Properties()
+    InputStream is = new ByteArrayInputStream(content.getBytes())
+    properties.load(is)
+
+    return properties['MAJOR'].toInteger()
+}
+
+def getVersionMinor() {
+    def content = file('./version.properties')
+
+    Properties properties = new Properties()
+    InputStream is = new ByteArrayInputStream(content.getBytes())
+    properties.load(is)
+
+    return properties['MINOR'].toInteger()
+}
+
+def getVersionPatch() {
+    def content = file('./version.properties')
+
+    Properties properties = new Properties()
+    InputStream is = new ByteArrayInputStream(content.getBytes())
+    properties.load(is)
+
+    return properties['PATCH'].toInteger()
+}
