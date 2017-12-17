@@ -1,9 +1,6 @@
 language: java
 jdk:
   - oraclejdk8
-language: java
-jdk:
-  - oraclejdk8
 
 cache:
   directories:
@@ -34,37 +31,5 @@ deploy:
     script: scripts/bintrayUpload.sh
     skip_cleanup: true
     all_branches: true
-    on:
-      tags: true
-
-
-cache:
-  directories:
-    - $HOME/.m2
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
-    - $HOME/.gradle/native
-    - $HOME/.gradle/daemon/
-    - $HOME/.android/build-cache/
-
-before_cache:
-  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
-
-before_install:
-  - "export TRAVIS_LAST_COMMIT_MSG=\"$(git log --format=%s --no-merges -n 1)\""
-
-# https://docs.travis-ci.com/user/customizing-the-build#Skipping-the-Installation-Step
-install: true  # if we don't skip install, ./gradlew assemble is invoked, but this task is not available.
-
-before_script:
-  - export PATH=$TRAVIS_BUILD_DIR/bin:$PATH  # ensure our tools are prefered over included ones.
-
-script:
-  - ./gradlew build
-
-deploy:
-  - provider: script
-    script: scripts/bintrayUpload.sh
-    skip_cleanup: true
     on:
       tags: true
