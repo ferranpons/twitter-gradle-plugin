@@ -7,7 +7,7 @@ import twitter4j.TwitterException;
 import twitter4j.TwitterFactory;
 import twitter4j.conf.ConfigurationBuilder;
 
-class TwitterUpdate extends DefaultTask {
+public class TwitterUpdate extends DefaultTask {
 
     private String consumerKey;
     private String consumerSecret;
@@ -16,7 +16,7 @@ class TwitterUpdate extends DefaultTask {
     private String message;
 
     @TaskAction
-    void sendTweet() throws TwitterException {
+    public void sendTweet() throws TwitterException {
         Twitter twitter = getTwitterInstance();
         twitter.updateStatus(getMessage());
         System.out.printf("%s", getMessage());
