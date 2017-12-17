@@ -25,7 +25,7 @@ apply plugin: 'com.novoda.bintray-release'
 
 gradlePlugin {
     plugins {
-        TwitterPlugin {
+        twitterPlugin {
             id = "com.ferranpons.twitter-gradle-plugin"
             implementationClass = "com.ferranpons.twitterplugin.TwitterPlugin"
         }

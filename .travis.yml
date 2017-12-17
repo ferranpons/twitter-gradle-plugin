@@ -31,12 +31,11 @@ before_script:
 
 script:
   - ./gradlew build
-  #- ./gradlew test
 
 deploy:
   provider: script
   script:
-    - ./gradlew publish
+    - ./gradlew bintrayUpload -PbintrayUser="${PERSONAL_BINTRAY_USER}" -PbintrayKey="${PERSONAL_BINTRAY_KEY}" -PdryRun=false
   skip_cleanup: true
   on:
     tags: true
