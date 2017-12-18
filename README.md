@@ -15,7 +15,7 @@ Generates a gradle task for sending Twitter updates.
 <p align="center">
 <b><a href="#features">Features</a></b>
 |
-<b><a href="#download">Download</a></b>
+<b><a href="#how-to-use-it">How to use it</a></b>
 |
 <b><a href="#who-made-this">Who Made This</a></b>
 |
@@ -27,13 +27,37 @@ Generates a gradle task for sending Twitter updates.
 </p>
 <br/>
 
+
 ### Features
 
 * Send tweets
 
 
-### Download
+### How To use it
 
+```
+buildscript {
+  repositories {
+    jcenter()
+    maven {
+      url  "https://dl.bintray.com/ferranpons/maven"
+    }
+  }
+  dependencies {
+    classpath 'com.ferranpons:twitter-gradle-plugin:1.0.2'
+  }
+}
+
+apply plugin: 'twitter-gradle-plugin'
+
+twitterPlugin {
+  consumerKey = "consumer key"
+  consumerSecret = "consumer secret"
+  accessToken = "access token"
+  accessTokenSecret = "access token secret"
+  message = "tweet message"
+}
+```
 
 
 
