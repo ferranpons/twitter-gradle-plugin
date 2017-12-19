@@ -8,11 +8,10 @@ Twitter Gradle Plugin
 *Gradle plugin*
 
 [![Build Status](https://travis-ci.org/ferranpons/twitter-gradle-plugin.svg?branch=master)](https://travis-ci.org/ferranpons/twitter-gradle-plugin)
-![version](https://img.shields.io/badge/version-v1.0.2-blue.svg)
 
 Generates a gradle task for sending Twitter updates.
 
-<br/>
+<br/><br/>
 <p align="center">
 <b><a href="#features">Features</a></b>
 |
@@ -33,6 +32,7 @@ Features
 --------
 
 * Gradle task ("createTweet") that send tweets with your user.
+
 
 
 How To use it
