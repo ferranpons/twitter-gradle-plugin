@@ -29,12 +29,14 @@ Generates a gradle task for sending Twitter updates.
 <br/>
 
 
-### Features
+Features
+--------
 
-* Send tweets
+* Gradle task ("createTweet") that send tweets with your user.
 
 
-### How To use it
+How To use it
+-------------
 
 #### Step 1
 
@@ -65,7 +67,7 @@ Generates a gradle task for sending Twitter updates.
 
 #### Step 5
 
-Add to your build.gradle file this:
+Add to your `build.gradle` file this:
 
 ```
 buildscript {
@@ -82,6 +84,8 @@ buildscript {
 
 apply plugin: 'twitter-gradle-plugin'
 
+
+// All the data required to send a tweet, you have to fill it
 twitterPlugin {
   consumerKey = "consumer key"
   consumerSecret = "consumer secret"
