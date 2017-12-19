@@ -33,3 +33,6 @@ deploy:
     all_branches: true
     on:
       tags: true
+
+after_deploy:
+  - ./gradlew createTweet
