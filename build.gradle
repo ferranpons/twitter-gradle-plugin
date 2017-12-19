@@ -9,7 +9,7 @@ buildscript {
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
         classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.4.14"
         classpath 'com.novoda:bintray-release:0.5.0'
-        classpath 'com.ferranpons:twitter-gradle-plugin:1.0.0'
+        classpath 'com.ferranpons:twitter-gradle-plugin:1.0.2'
     }
 }
 
@@ -17,7 +17,7 @@ group 'com.ferranpons'
 version "${versionMajor}.${versionMinor}.${versionPatch}"
 
 apply plugin: 'java-gradle-plugin'
-//apply plugin: 'com.ferranpons.twitter-gradle-plugin'
+apply plugin: 'twitter-gradle-plugin'
 
 sourceCompatibility = 1.8
 
@@ -50,6 +50,14 @@ publish {
     publishVersion = "${versionMajor}.${versionMinor}.${versionPatch}"
     desc = 'Gradle plugin that generates a gradle task for sending Twitter updates'
     website = 'https://github.com/ferranpons'
+}
+
+twitterPlugin {
+    consumerKey = System.getenv()['TWITTER_API_KEY']
+    consumerSecret = System.getenv()['TWITTER_API_SECRET']
+    accessToken = System.getenv()['TWITTER_ACCESS_TOKEN']
+    accessTokenSecret = System.getenv()['TWITTER_ACCESS_TOKEN_SECRET']
+    message = "New Twitter Gradle Plugin version ${versionMajor}.${versionMinor}.${versionPatch} available for download. Check out the details at https://github.com/ferranpons/twitter-gradle-plugin"
 }
 
 def getVersionMajor() {
