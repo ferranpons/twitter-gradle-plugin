@@ -4,12 +4,16 @@ buildscript {
         maven {
             url  "https://dl.bintray.com/ferranpons/maven"
         }
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
     }
     dependencies {
         classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
         classpath "org.jfrog.buildinfo:build-info-extractor-gradle:4.4.14"
         classpath 'com.novoda:bintray-release:0.5.0'
         classpath 'com.ferranpons:twitter-gradle-plugin:1.0.2'
+        classpath "com.gradle.publish:plugin-publish-plugin:0.9.9"
     }
 }
 
@@ -18,6 +22,7 @@ version "${versionMajor}.${versionMinor}.${versionPatch}"
 
 apply plugin: 'java-gradle-plugin'
 apply plugin: 'twitter-gradle-plugin'
+apply plugin: "com.gradle.plugin-publish"
 
 sourceCompatibility = 1.8
 
@@ -39,7 +44,7 @@ gradlePlugin {
 
 dependencies {
     compile group: 'org.twitter4j', name: 'twitter4j-core', version: '4.0.4'
-
+    compile gradleApi()
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
@@ -50,6 +55,26 @@ publish {
     publishVersion = "${versionMajor}.${versionMinor}.${versionPatch}"
     desc = 'Gradle plugin that generates a gradle task for sending Twitter updates'
     website = 'https://github.com/ferranpons'
+}
+
+pluginBundle {
+    website = 'https://github.com/ferranpons/'
+    vcsUrl = 'https://github.com/ferranpons/twitter-gradle-plugin'
+    description = 'Gradle plugin that generates a gradle task for sending Twitter updates'
+    tags = ['twitter', 'twitter4j','tweet','sendUpdates']
+
+    plugins {
+        twitterPlugin {
+            id = 'com.ferranpons.twitterplugin'
+            displayName = 'Twitter Gradle plugin'
+        }
+    }
+
+    mavenCoordinates {
+        groupId = "com.ferranpons"
+        artifactId = "twitter-gradle-plugin"
+        version = "${versionMajor}.${versionMinor}.${versionPatch}"
+    }
 }
 
 twitterPlugin {
