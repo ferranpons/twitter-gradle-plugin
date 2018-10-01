@@ -2,7 +2,7 @@ Twitter Gradle Plugin
 =====================
 
 <img align="left" width="0" height="150px" hspace="5"/>
-<img src="twitter_gradle_logo.png" align="left" width="117px" height="150px"/>
+<img src="https://github.com/ferranpons/twitter-gradle-plugin/raw/corrected-logo/twitter_gradle_plugin_logo.png" align="left" width="117px" height="150px"/>
 <img align="left" width="0" height="150px" hspace="5"/>
 
 *Gradle plugin*
