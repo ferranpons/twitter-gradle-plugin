@@ -1,7 +1,7 @@
 package com.ferranpons.twitterplugin;
 
 import org.gradle.api.DefaultTask;
-import org.gradle.api.provider.PropertyState;
+import org.gradle.api.provider.Property;
 import org.gradle.api.provider.Provider;
 import org.gradle.api.tasks.Input;
 import org.gradle.api.tasks.TaskAction;
@@ -12,18 +12,18 @@ import twitter4j.conf.ConfigurationBuilder;
 
 public class TwitterUpdate extends DefaultTask {
 
-    private final PropertyState<String> consumerKey;
-    private final PropertyState<String> consumerSecret;
-    private final PropertyState<String> accessToken;
-    private final PropertyState<String> accessTokenSecret;
-    private final PropertyState<String> message;
+    private final Property<String> consumerKey;
+    private final Property<String> consumerSecret;
+    private final Property<String> accessToken;
+    private final Property<String> accessTokenSecret;
+    private final Property<String> message;
 
     public TwitterUpdate() {
-        this.consumerKey = getProject().property(String.class);
-        this.consumerSecret = getProject().property(String.class);
-        this.accessToken = getProject().property(String.class);
-        this.accessTokenSecret = getProject().property(String.class);
-        this.message = getProject().property(String.class);
+        this.consumerKey = getProject().getObjects().property(String.class);
+        this.consumerSecret = getProject().getObjects().property(String.class);
+        this.accessToken = getProject().getObjects().property(String.class);
+        this.accessTokenSecret = getProject().getObjects().property(String.class);
+        this.message = getProject().getObjects().property(String.class);
     }
 
     @TaskAction
