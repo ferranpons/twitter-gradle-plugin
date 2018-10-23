@@ -13,11 +13,11 @@ public class TwitterPluginExtension {
     private final Property<String> message;
 
     public TwitterPluginExtension(Project project) {
-        this.consumerKey = project.property(String.class);
-        this.consumerSecret = project.property(String.class);
-        this.accessToken = project.property(String.class);
-        this.accessTokenSecret = project.property(String.class);
-        this.message = project.property(String.class);
+        this.consumerKey = project.getObjects().property(String.class);
+        this.consumerSecret = project.getObjects().property(String.class);
+        this.accessToken = project.getObjects().property(String.class);
+        this.accessTokenSecret = project.getObjects().property(String.class);
+        this.message = project.getObjects().property(String.class);
     }
 
     public String getConsumerKey() {
