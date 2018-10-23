@@ -1,16 +1,16 @@
 package com.ferranpons.twitterplugin;
 
 import org.gradle.api.Project;
-import org.gradle.api.provider.PropertyState;
+import org.gradle.api.provider.Property;
 import org.gradle.api.provider.Provider;
 
 public class TwitterPluginExtension {
 
-    private final PropertyState<String> consumerKey;
-    private final PropertyState<String> consumerSecret;
-    private final PropertyState<String> accessToken;
-    private final PropertyState<String> accessTokenSecret;
-    private final PropertyState<String> message;
+    private final Property<String> consumerKey;
+    private final Property<String> consumerSecret;
+    private final Property<String> accessToken;
+    private final Property<String> accessTokenSecret;
+    private final Property<String> message;
 
     public TwitterPluginExtension(Project project) {
         this.consumerKey = project.property(String.class);
