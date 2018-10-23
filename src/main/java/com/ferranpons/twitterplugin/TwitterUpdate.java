@@ -19,11 +19,11 @@ public class TwitterUpdate extends DefaultTask {
     private final Property<String> message;
 
     public TwitterUpdate() {
-        this.consumerKey = getProject().property(String.class);
-        this.consumerSecret = getProject().property(String.class);
-        this.accessToken = getProject().property(String.class);
-        this.accessTokenSecret = getProject().property(String.class);
-        this.message = getProject().property(String.class);
+        this.consumerKey = getProject().getObjects().property(String.class);
+        this.consumerSecret = getProject().getObjects().property(String.class);
+        this.accessToken = getProject().getObjects().property(String.class);
+        this.accessTokenSecret = getProject().getObjects().property(String.class);
+        this.message = getProject().getObjects().property(String.class);
     }
 
     @TaskAction
